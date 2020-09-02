@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import { Link } from 'react-router-dom';
 
 class SignUp extends Component {
@@ -55,7 +54,7 @@ class SignUp extends Component {
               </div>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" className="FormField__Input" placeholder="Enter your password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
+                <input type="password" id="confirmPassword" className="FormField__Input" placeholder="Confirm your password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
               </div>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="email">E-Mail Address</label>

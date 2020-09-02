@@ -12,7 +12,6 @@ class App extends Component {
     return (
       <Router basename="/react-auth-ui/">
         <div className="App">
-          <div className="App__Aside"></div>
           <div className="App__Form">
               <Route exact path="/" component={SignUp}>
               </Route>

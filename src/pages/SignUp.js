@@ -19,19 +19,20 @@ class SignUp extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
     handleChange(e) {
         let target = e.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
         let name = target.name;
 
         this.setState({
-          [name]: value
+          [name]: value,
+          
         });
     }
 
     handleSubmit(e) {
         e.preventDefault();
-
         console.log('The form was submitted with the following data:');
         console.log(this.state);
     }
@@ -42,11 +43,11 @@ class SignUp extends Component {
             <form onSubmit={this.handleSubmit} className="FormFields">
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="name">First Name</label> 
-                <input type="text" id="name" className="FormField__Input" placeholder="Enter your first name" name="name" value={this.state.firstName} onChange={this.handleChange} />
+                <input type="text" id="name" className="FormField__Input" placeholder="Enter your first name" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
               </div>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" className="FormField__Input" placeholder="Enter your last name" name="name" value={this.state.lastName} onChange={this.handleChange} />
+                <input type="text" id="lastName" className="FormField__Input" placeholder="Enter your last name" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
               </div>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="password">Password</label>

@@ -5,6 +5,7 @@ import{
   Route,
 } from 'react-router-dom';
 import './App.css';
+import SocialLogIn from './SocialLogIn';
 
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
           <div className="App__Form">
               <Route exact path="/" component={SignUp}>
               </Route>
-              
+              <socialLogIn />
           </div>
 
         </div>

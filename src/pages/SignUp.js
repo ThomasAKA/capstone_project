@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faFacebook,
+    faTwitter,
+    faInstagram
+  } from "@fortawesome/free-brands-svg-icons";
 class SignUp extends Component {
     constructor() {
         super();
@@ -70,6 +75,20 @@ class SignUp extends Component {
               <div className="FormField">
                   <button className="FormField__Button mr-20">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
               </div>
+              {/* <div class="social-container">
+                <h3>SignUp with your Social media platform</h3>
+                <a 
+                   className="facebook social">
+                   <FontAwesomeIcon icon={faFacebook} size="2x" />
+                </a>
+                <a className="twitter social">
+                   <FontAwesomeIcon icon={faTwitter} size="2x" />
+                </a>
+                <a
+                   className="instagram social">
+                   <FontAwesomeIcon icon={faInstagram} size="2x" />
+                </a>
+                </div> */}
             </form>
           </div>
         );

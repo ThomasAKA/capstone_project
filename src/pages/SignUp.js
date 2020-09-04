@@ -18,7 +18,7 @@ class SignUp extends Component {
             // firstName: '',
             // lastName: '',
             // confirmPassword: '',
-            hasAgreed: true
+            hasAgreed: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -42,13 +42,33 @@ class SignUp extends Component {
         e.preventDefault()
         console.log('The form was submitted with the following data:');
         console.log(this.state);
+        const data ={
+          "username":this.state.username,
+          "password":this.state.password,
+          "email":this.state.email,
+        }
     
-  }
-    componentDidMount(){
-    axios.post("http://127.0.0.1:8000/api/register/")
+
+//   const url = "http://127.0.0.1:8000/api/register/";
+//   fetch(url)
+//    .then(response =>{
+//     console.log(response);
+//     if(response.status === 405){
+//       console.log("SignUp successful");
+//     }
+//     else{
+//       console.log(response)
+//     };
+//   })
+
+// .catch(() =>console.log("cannot access" +url+ "response.Blocked by browser"))}
+
+    
+    axios.get("http://127.0.0.1:8000/api/register/", data)
+
     .then(response =>{
       console.log(response);
-      if(response.status === 200){
+      if(response.status === 400){
         console.log("SignUp successful");
       }
       else{
@@ -59,8 +79,8 @@ class SignUp extends Component {
       console.log(error);
       
     });
-  }
   
+}
 
 
     render() {
@@ -76,6 +96,10 @@ class SignUp extends Component {
                 <input type="text" id="lastName" className="FormField__Input" placeholder="Enter your last name" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
               </div> */}
               <div className="FormField">
+                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
+                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+              </div>
+              <div className="FormField">
                 <label className="FormField__Label" htmlFor="password">Password</label>
                 <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
@@ -83,10 +107,7 @@ class SignUp extends Component {
                 <label className="FormField__Label" htmlFor="confirmPassword">Confirm Password</label>
                 <input type="password" id="confirmPassword" className="FormField__Input" placeholder="Confirm your password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
               </div> */}
-              <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
-              </div>
+        
 
               <div className="FormField">
                 <label className="FormField__CheckboxLabel">

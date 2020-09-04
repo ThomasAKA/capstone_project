@@ -1,4 +1,4 @@
-from .models import User
+from .models import UserAccess
 from rest_framework import serializers
 
 #import for knox
@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['id','username','email' , 'password']
+        model = UserAccess
+        fields = ['firstname','lastname', 'email' , 'password1', 'password2', 'terms']
 
 
 # Register Serializer

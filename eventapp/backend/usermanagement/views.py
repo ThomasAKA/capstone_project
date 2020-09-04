@@ -11,7 +11,11 @@ from knox.models import AuthToken
 # Create your views here.
 
 class UserView(viewsets.ModelViewSet):
+<<<<<<< HEAD
     serializer_class = UserSerializer
+=======
+    serialiizer_class = UserSerializer
+>>>>>>> 7984da657df4e25d1f23806d4fb89f9c68136687
     queryset = User.objects.all()
 
 

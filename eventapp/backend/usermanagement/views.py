@@ -12,10 +12,14 @@ from knox.models import AuthToken
 
 class UserView(viewsets.ModelViewSet):
 <<<<<<< HEAD
+<<<<<<< HEAD
     serializer_class = UserSerializer
 =======
     serialiizer_class = UserSerializer
 >>>>>>> 7984da657df4e25d1f23806d4fb89f9c68136687
+=======
+    serializer_class = UserSerializer
+>>>>>>> 4de622fa1a75502da6bf73ebe2597f6675e6e7e3
     queryset = User.objects.all()
 
 

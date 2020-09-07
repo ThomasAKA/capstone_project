@@ -1,24 +1,19 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faFacebook,
-    faTwitter,
-    faInstagram
-  } from "@fortawesome/free-brands-svg-icons";
 import axios from 'axios';
+import{ Link } from 'react-router-dom';
+
 class SignUp extends Component {
     constructor() {
         super();
 
         this.state = {
             email: '',
-            password: '',
+            password1: '',
             username: '',
-            // firstName: '',
-            // lastName: '',
-            // confirmPassword: '',
-            hasAgreed: false
+            firstname: '',
+            lastname: '',
+            password2: '',
+            terms: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -43,40 +38,27 @@ class SignUp extends Component {
         console.log('The form was submitted with the following data:');
         console.log(this.state);
         const data ={
-          "username":this.state.username,
-          "password":this.state.password,
+         "username":this.state.username,
+          "password1":this.state.password1,
+          "password2" :this.state.password2,
           "email":this.state.email,
+          "firstname":this.state.firstname,
+          "lastname":this.state.lastname,
+          "terms":this.state.terms,
         }
-    
+       axios.post("http://127.0.0.1:8000/usermanagements/", data)
 
-//   const url = "http://127.0.0.1:8000/api/register/";
-//   fetch(url)
-//    .then(response =>{
-//     console.log(response);
-//     if(response.status === 405){
-//       console.log("SignUp successful");
-//     }
-//     else{
-//       console.log(response)
-//     };
-//   })
-
-// .catch(() =>console.log("cannot access" +url+ "response.Blocked by browser"))}
-
-    
-    axios.get("http://127.0.0.1:8000/api/register/", data)
-
-    .then(response =>{
-      console.log(response);
-      if(response.status === 400){
+       .then(response =>{
+        console.log(response);
+        if(response.status === 201){
         console.log("SignUp successful");
-      }
-      else{
+        }
+        else{
         console.log(response)
-      };
-    })
-    .catch(error => {
-      console.log(error);
+        };
+      })
+      .catch(error => {
+        console.log(error);
       
     });
   
@@ -86,9 +68,19 @@ class SignUp extends Component {
     render() {
         return (
         <div className="FormCenter">
+          <h2><center>Sign Up</center></h2>
             <form onSubmit={this.handleSubmit} className="FormFields">
+            
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="name">username</label> 
+                <label className="FormField__Label" htmlFor="name">firstName</label> 
+                <input type="text" id="name" className="FormField__Input" placeholder="Enter your first name" name="firstname" value={this.state.firstname} onChange={this.handleChange} />
+              </div>
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="name">lastName</label> 
+                <input type="text" id="name" className="FormField__Input" placeholder="Enter your first name" name="lastname" value={this.state.lastname} onChange={this.handleChange} />
+              </div>
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="name">Username</label> 
                 <input type="text" id="name" className="FormField__Input" placeholder="Enter your first name" name="username" value={this.state.username} onChange={this.handleChange} />
               </div>
               {/* <div className="FormField">
@@ -100,8 +92,12 @@ class SignUp extends Component {
                 <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
               </div>
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="password">Password</label>
-                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="Password1">Password</label>
+                <input type="password" id="Password1" className="FormField__Input" placeholder="Enter your password" name="password1" value={this.state.password1} onChange={this.handleChange} />
+              </div>
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="Password2">Confirm Password</label>
+                <input type="password" id="Password2" className="FormField__Input" placeholder="Confirm your password" name="password2" value={this.state.password2} onChange={this.handleChange} />
               </div>
               {/* <div className="FormField">
                 <label className="FormField__Label" htmlFor="confirmPassword">Confirm Password</label>
@@ -111,12 +107,13 @@ class SignUp extends Component {
 
               <div className="FormField">
                 <label className="FormField__CheckboxLabel">
-                    <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
+                    <input className="FormField__Checkbox" type="checkbox" name="terms" value={this.state.terms} onChange={this.handleChange} /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
                 </label>
               </div>
 
               <div className="FormField">
-                  <button className="FormField__Button mr-20">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
+                  <button className="FormField__Button mr-20"><Link to = "/">Sign Up</Link></button> 
+                  {/* <Link to="/sign-in" className="FormField__Link">I'm already member</Link> */}
               </div>
               {/* <div class="social-container">
                 <h3>SignUp with your Social media platform</h3>

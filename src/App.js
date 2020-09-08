@@ -19,13 +19,9 @@ class App extends Component {
       <Router>
         <div className="Body">
           <Route exact path="/" component={LogIn}/>
+          <Route exact path="/signup" component={SignUp}/>
         </div>
-        <div className="App">
-          <div className="App__Form">
-        <Route exact path="/signup" component={SignUp}/>
-        <Route exact path="/program" component={Program}/>
-        </div>
-        </div>
+        {/* <Route exact path="/program" component={Program}/> */}
       </Router>
     );
   }

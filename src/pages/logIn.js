@@ -19,7 +19,7 @@ constructor(props) {
 
 //handle text change
 
-handlechange= (event)=>{
+handleChange= (event)=>{
   const  {name,value} = event.target
   this.setState({
     [name]:value,
@@ -35,7 +35,8 @@ handleSubmit = (e)=>{
     "password":this.state.password,
   }
 
-  axios.post("http://127.0.0.1:8000/api/login/", data)
+  console.log(this.state.username,this.state.password)
+  axios.post("http://13.81.46.121:8080/api/login/", data)
   .then(function (response) {
     console.log(response);
     if(response.status === 200){
@@ -54,23 +55,46 @@ handleSubmit = (e)=>{
 
   render() {
     return (
-    <section className="form">
 
-  <h2>Login</h2>
+  <div className="App">
+      <div className="App__Form" style={{marginTop:100}}>
+        <div className="FormCenter">
+          <h2><center>Login In</center></h2>
+            <form onSubmit={this.handleSubmit} className="FormFields">
+            
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="name">Username</label> 
+                <input type="text" id="name" className="FormField__Input" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+              </div>
+            
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="Password">Password</label>
+                <input type="password" id="password" className="FormField__Input" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+              </div>
+
+              <div className="FormField">
+                  <button type="submit" className="FormField__Button mr-20">Login</button> 
+              </div>
+              <Link to="/signup" className="FormField__Link">Not Signed up yet ? Click here</Link> 
+              {/* <div class="social-container">
+                <h3>SignUp with your Social media platform</h3>
+                <a 
+                   className="facebook social">
+                   <FontAwesomeIcon icon={faFacebook} size="2x" />
+                </a>
+                <a className="twitter social">
+                   <FontAwesomeIcon icon={faTwitter} size="2x" />
+                </a>
+                <a
+                   className="instagram social">
+                   <FontAwesomeIcon icon={faInstagram} size="2x" />
+                </a>
+                </div> */}
+            </form>
+          </div>
+        </div>
+      </div>
   
-      <form >
-      
-        <input onChange={this.handlechange} placeholder="Username" type="text" name="username"></input>
-      
-        <input onChange={this.handlechange} placeholder="Password" type="password" name="password"></input><br></br>
-
-        <button onClick={this.handleSubmit} type="submit">Login</button><br></br>
-        <a href="/">Forgot Password ?</a>
-        {/* <p style={{textAlign:"center"}}>Or</p> */}<br></br>
-        <button id="Signup"><Link to = "/signup">Sign Up</Link></button>
-      </form>
-
-</section>
     )
 
 

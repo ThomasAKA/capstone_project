@@ -11,6 +11,8 @@
   margin-top: 15px;
   margin-bottom: 15px;
   overflow: auto;
+  border: 25 black;
+  border-radius: 20;
 }
 
 .PageSwitcher {

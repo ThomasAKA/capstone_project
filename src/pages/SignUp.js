@@ -46,7 +46,7 @@ class SignUp extends Component {
           "lastname":this.state.lastname,
           "terms":this.state.terms,
         }
-       axios.post("http://127.0.0.1:8000/usermanagements/", data)
+       axios.post("http://13.81.46.121:8080/usermanagements/", data)
 
        .then(response =>{
         console.log(response);
@@ -67,6 +67,8 @@ class SignUp extends Component {
 
     render() {
         return (
+    <div className="App">
+      <div className="App__Form">
         <div className="FormCenter">
           <h2><center>Sign Up</center></h2>
             <form onSubmit={this.handleSubmit} className="FormFields">
@@ -112,9 +114,10 @@ class SignUp extends Component {
               </div>
 
               <div className="FormField">
-                  <button className="FormField__Button mr-20"><Link to = "/">Sign Up</Link></button> 
+                  <button type="submit" className="FormField__Button mr-20">Sign Up</button> 
                   {/* <Link to="/sign-in" className="FormField__Link">I'm already member</Link> */}
               </div>
+              <Link to="/" className="FormField__Link">Already Signed up ? Click here</Link> 
               {/* <div class="social-container">
                 <h3>SignUp with your Social media platform</h3>
                 <a 
@@ -131,6 +134,9 @@ class SignUp extends Component {
                 </div> */}
             </form>
           </div>
+        </div>
+      </div>
+
         );
     }
 }

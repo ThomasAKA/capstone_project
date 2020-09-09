@@ -13,7 +13,7 @@ class SignUp extends Component {
             firstname: '',
             lastname: '',
             password2: '',
-            terms: false
+            terms: 'false',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -50,7 +50,7 @@ class SignUp extends Component {
 
        .then(response =>{
         console.log(response);
-        if(response.status === 201){
+        if(response.status === 200){
         console.log("SignUp successful");
         }
         else{

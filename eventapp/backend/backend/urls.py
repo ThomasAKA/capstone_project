@@ -20,7 +20,7 @@ from usermanagement import views
 
 
 router = routers.DefaultRouter()
-router.register('usermanagements', views.UserView, 'usermanagement')
+# router.register('usermanagements', views.UserView, 'usermanagement')
 
 
 urlpatterns = [

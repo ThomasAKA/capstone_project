@@ -59,7 +59,7 @@ handleSubmit = (e)=>{
   <div className="App">
       <div className="App__Form" style={{marginTop:100}}>
         <div className="FormCenter">
-          <h2><center>Login In</center></h2>
+          <h2><center>LogIn</center></h2>
             <form onSubmit={this.handleSubmit} className="FormFields">
             
               <div className="FormField">

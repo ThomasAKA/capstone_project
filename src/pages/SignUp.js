@@ -46,6 +46,10 @@ class SignUp extends Component {
           "lastname":this.state.lastname,
           "terms":this.state.terms,
         }
+        const {password1, password2} =this.state;
+        if (password1 !== password2){
+          alert("Passwords dont match");
+        } else{
        axios.post("http://13.81.46.121:8080/usermanagements/", data)
 
        .then(response =>{
@@ -61,6 +65,7 @@ class SignUp extends Component {
         console.log(error);
       
     });
+  }
   
 }
 

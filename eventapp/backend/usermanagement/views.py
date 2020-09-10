@@ -1,20 +1,14 @@
 from django.shortcuts import render
-from rest_framework import viewsets
-from .serializers import UserSerializer,RegisterSerializer
-from .models import UserAccess
+from django.http import HttpResponse
+from rest_framework import viewsets,generics,permissions
+from .serializers import RegisterSerializer,EventSerializer
+from .models import UserAccess, Event
 
 
-from rest_framework import generics, permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
 
 # Create your views here.
-
-# class UserView(viewsets.ModelViewSet):
-#     serializer_class = UserSerializer
-#     queryset = UserAccess.objects.all()
-
-
 
 # Register API
 class RegisterAPI(generics.GenericAPIView):
@@ -25,7 +19,7 @@ class RegisterAPI(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         return Response({
-        "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        "user": RegisterSerializer(user, context=self.get_serializer_context()).data,
         "token": AuthToken.objects.create(user)[1]
         })
 
@@ -44,3 +38,20 @@ class LoginAPI(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         return super(LoginAPI, self).post(request, format=None)
+
+
+# Create your views here.
+class EventView(generics.GenericAPIView):
+    serializer_class = EventSerializer
+    queryset = Event.objects.all()
+
+    def post(self,request):
+        file_model = Event()
+        
+        _, file = request.FILES.popitem() #get first element of uploaded images
+        file = file[0] # get the file from MultiValueDict
+
+        file_model.file = file
+        file_model.save()
+
+        return HttpResponse(content_type='text/plain', content='File uploaded')

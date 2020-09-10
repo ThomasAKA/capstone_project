@@ -1,14 +1,8 @@
-from .models import UserAccess
-from rest_framework import serializers
+from .models import UserAccess,Event
 
 #import for knox
 from rest_framework import serializers
 from django.contrib.auth.models import User
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserAccess
-        fields = ('id', 'username', 'email')
 
 
 # Register Serializer
@@ -20,7 +14,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         # user = User.objects.create_user(validated_data['username'], validated_data['first_name'],validated_data['last_name'], validated_data['email'], validated_data['password'])
-        myuser = User()
+        myuser = User.objects.create_user('username','email','password')
         myuser.username = validated_data['username']
         myuser.first_name = validated_data['first_name']
         myuser.last_name = validated_data['last_name']
@@ -29,3 +23,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         myuser.save()
 
         return myuser
+
+    
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = ['id','title', 'location', 'description', 'image']
+

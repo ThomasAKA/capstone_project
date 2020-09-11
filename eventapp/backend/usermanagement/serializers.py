@@ -1,4 +1,4 @@
-from .models import UserAccess,Event
+from .models import UserAccess
 
 #import for knox
 from rest_framework import serializers
@@ -14,7 +14,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         # user = User.objects.create_user(validated_data['username'], validated_data['first_name'],validated_data['last_name'], validated_data['email'], validated_data['password'])
-        myuser = User.objects.create_user('username','email','password')
+        myuser = User()
         myuser.username = validated_data['username']
         myuser.first_name = validated_data['first_name']
         myuser.last_name = validated_data['last_name']
@@ -25,8 +25,3 @@ class RegisterSerializer(serializers.ModelSerializer):
         return myuser
 
     
-class EventSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Event
-        fields = ['id','title', 'location', 'description', 'image']
-

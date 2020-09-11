@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets,generics,permissions
-from .serializers import RegisterSerializer,EventSerializer
-from .models import UserAccess, Event
+from .serializers import RegisterSerializer
+from .models import UserAccess
 
 
 from rest_framework.response import Response
@@ -40,18 +40,3 @@ class LoginAPI(KnoxLoginView):
         return super(LoginAPI, self).post(request, format=None)
 
 
-# Create your views here.
-class EventView(generics.GenericAPIView):
-    serializer_class = EventSerializer
-    queryset = Event.objects.all()
-
-    def post(self,request):
-        file_model = Event()
-        
-        _, file = request.FILES.popitem() #get first element of uploaded images
-        file = file[0] # get the file from MultiValueDict
-
-        file_model.file = file
-        file_model.save()
-
-        return HttpResponse(content_type='text/plain', content='File uploaded')

@@ -25,5 +25,6 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('usermanagement.urls')), #setting the api
+    path('', include('usermanagement.urls')),
+    path('', include('event.urls')), #setting the api
 ]

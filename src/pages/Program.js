@@ -1,59 +1,89 @@
 import React, { Component} from 'react';
+import { Media } from 'reactstrap';
 
 
 class Program extends Component{
     constructor(props){
         super(props)
         this.state={
-            Events :[
+            events : [
             {
-                title: 'New Look',
-                description:'ndmkkdmmkdmmfkkmnskksmmdkkskks',
-                location:'Adenta',
-                image:'./assets/download.jpg',
+                title: 'Scrap',
+                description:'Creating a beautiful personalized scrapbook has never been easier. In collaboration with Mixbook, Martha created her own collection of beautiful scrap books and...',
+               
+                image: require('../assets/images/newwww.jpg'),
             },
             {
                 title: 'New Look',
-                description:'dkmdnvkdkkdkkd',
-                location:'East Legon',
-                image:'./assets/download(1).jpg',
+                description:'If you’re a recruiter looking to improve your time management skills, you’ve come to the right place! you will learn an awesome 4 step time management technique. Bonus: Useful time management tips and apps included!',
+                
+                image: require ('../assets/images/new.jpg'),
+            },
+            { 
+                title: 'GetInvolved',
+                description:'Motivation is a powerful, yet tricky beast. Sometimes it is really easy to get motivated, and you find yourself wrapped up in a whirlwind of excitement. Other times ...',
+
+                image: require('../assets/images/neww.jpg'),
             },
             {
-                title: 'Neat',
-                description:'kkv vkkdkksmmsowmfmfkdvkmv',
-                location:'Legon',
-                image:'./assets/download(2).jpg',
+                title: 'Blobitecture',
+                description:'A mashup of the words “blob” and “architecture,” blobitecture is the name for the architectural style of buildings designed with totally unique, organic forms, often ..',
+                image: require('../assets/images/newww.jpg'),
             },
             {
-                title: 'Kaode',
-                description:'clkkvmd vk fmemvmmdmv',
-                location:'Adenta',
-                image:'./assets/images.jpg',
-            },
-            {
-                title: 'Lets go',
-                description:'mmfkk knndvkkdvdsvsdvdv',
-                location:'Adj',
-                image:'./assets/images(1).jpg',
+                title: 'Color Psychology',
+                description:'Theres a whole science in the meanings of different colors. As an entrepreneur or designer, its essential to be aware of these color meanings and choose your ...',
+                image: require('../assets/images/newwwww.jpg') ,
             }
           ]
         }
+        
     }
+   
 
     render(){
+        var imgStyle={
+            width:"150px",
+            height :"100px",
+        }
+
         const program = this.state.events.map((event) =>{
         return(
-            <div key={event.id} className="column">
-                <li>{this.image}</li>
-
-            </div>
+            
+            <div className="column">
+                <Media tag ="ul">
+                    <Media left className="hover" >
+                     <Media object  align ="left" style={imgStyle} src={event.image} />
+                    </Media>
+                    <Media body className="block">
+                        <Media heading>{event.title}</Media>
+                        <p className="limit">{event.description}</p>
+                        <p className="limit">{event.location}</p>
+                    </Media>
+                    
+              </Media>
+        </div>
+        // <div className="column">
+        //    <div>
+        //      <img className="rows" 
+        //         style={imgStyle} align ="left" src = {event.image}/>
+        //     </div>
+        //  <div className="block"> 
+        //     <div><h1>{event.title}</h1>
+        //     <p className="limit">{event.description}</p>
+        //     <p className="limit">{event.location}</p>
+        //     </div>
+        //  </div>
+        // </div>
         );
         });
 
         return(
-            <div>
-                <div>
-                    {program}
+            <div className="container">
+                <div className="row">
+                    <Media list>
+                        {program
+                    }</Media>
                 </div>
             </div>
         )

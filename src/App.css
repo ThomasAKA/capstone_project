@@ -193,4 +193,22 @@ body {
   .mg{ 
   margin: 10px;
   }
+  .block{
+    margin-left: 25%;
+  }
+ .column{
+   width: 50%;
   
+ }
+ .new{
+   width: 40%;
+   background-color: aqua;
+ }
+ 
+ .limit p{
+      width: 280px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: pre-line;
+      
+ }

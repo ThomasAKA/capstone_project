@@ -89,7 +89,7 @@ class Program extends Component{
             });
 
         return(
-                <div className="row">
+                <div className="row mr-0">
                     <div className="col-md-9">
                     <Media list>
                         <h3 className="m-4">Events</h3>

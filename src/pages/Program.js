@@ -1,5 +1,7 @@
 import React, { Component} from 'react';
-import { Media } from 'reactstrap';
+import { Media,Card ,CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button} from 'reactstrap';
+import '../assets/css/bootstrap.css'    
 
 
 class Program extends Component{
@@ -50,12 +52,12 @@ class Program extends Component{
         const program = this.state.events.map((event) =>{
         return(
             
-            <div className="column">
+            <div className="pt-2">
                 <Media tag ="ul">
-                    <Media left className="hover" >
-                     <Media object  align ="left" style={imgStyle} src={event.image} />
+                    <Media  className="hover mr-4" >
+                     <Media object style={imgStyle} src={event.image} />
                     </Media>
-                    <Media body className="block">
+                    <Media body className="">
                         <Media heading>{event.title}</Media>
                         <p className="limit">{event.description}</p>
                         <p className="limit">{event.location}</p>
@@ -67,14 +69,39 @@ class Program extends Component{
         );
         });
 
+
+        const topEvents = this.state.events.map((event) =>{
+            return(
+                
+                <div className="m-2">
+                   <Card>
+                        <CardImg top style={{height :"150px"}} src={event.image} alt=" image" />
+                        <CardBody>
+                        <CardTitle>{event.title}</CardTitle>
+                        <CardSubtitle>20th March</CardSubtitle>
+                        <CardText>{event.description}</CardText>
+                        <Button>See More</Button>
+                        </CardBody>
+                    </Card>
+            </div>
+            
+            );
+            });
+
         return(
-            <div className="container">
                 <div className="row">
+                    <div className="col-md-9">
                     <Media list>
+                        <h3 className="m-4">Events</h3>
                         {program
                     }</Media>
+                    </div>
+                    <div className="col-md-3">
+                        <h3 className="m-4"> Top Events</h3>
+                        {topEvents}
+                    </div>
+                   
                 </div>
-            </div>
         )
     }
 

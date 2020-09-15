@@ -6,7 +6,7 @@ from .models import Event
 
 
 # Create your views here.
-class EventView(generics.ListCreateAPIView):
+class EventView(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
 
@@ -19,8 +19,4 @@ class EventView(generics.ListCreateAPIView):
         file_model.file = file
         file_model.save()
 
-        return HttpResponse(content_type='text/plain', content='File uploaded')
-
-class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
+        return HttpResponse(content_type='text/plain', content='Event added')

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'usermanagement',
     'event',
     'knox',
+    'eventbooking',
 ]
 
 MIDDLEWARE = [

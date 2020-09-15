@@ -13,12 +13,12 @@ class Event(models.Model):
         (midmorning, 'Midmorning'),
         (afternoon, 'Afternoon'),
     ]
-    event_time = models.CharField(max_length=15, choices=EVENT_TIME_CHOICES,default = morning)
+    event_time = models.CharField(max_length=15, choices=EVENT_TIME_CHOICES)
     speaker = models.CharField(max_length= 100)
     topic = models.CharField(max_length=300)
     roomcapacity = models.CharField(max_length=50)
     description = models.TextField()
-    image = models.ImageField(upload_to = 'uploads/', default ='C:/Users/user.CAMIL/Desktop/capstone_project/eventapp/backend/event/download.jpg')
+    image = models.ImageField(upload_to = 'uploads/')
 
 
 

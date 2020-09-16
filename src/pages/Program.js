@@ -1,5 +1,11 @@
 import React, { Component} from 'react';
+<<<<<<< HEAD
 import { Media } from 'reactstrap';
+=======
+import { Media,Card ,CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button} from 'reactstrap';
+import '../assets/css/bootstrap.css'    
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
 
 
 class Program extends Component{
@@ -50,12 +56,21 @@ class Program extends Component{
         const program = this.state.events.map((event) =>{
         return(
             
+<<<<<<< HEAD
             <div className="column">
                 <Media tag ="ul">
                     <Media left className="hover" >
                      <Media object  align ="left" style={imgStyle} src={event.image} />
                     </Media>
                     <Media body className="block">
+=======
+            <div className="pt-2">
+                <Media tag ="ul">
+                    <Media  className="hover mr-4" >
+                     <Media object style={imgStyle} src={event.image} />
+                    </Media>
+                    <Media body className="">
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
                         <Media heading>{event.title}</Media>
                         <p className="limit">{event.description}</p>
                         <p className="limit">{event.location}</p>
@@ -63,6 +78,7 @@ class Program extends Component{
                     
               </Media>
         </div>
+<<<<<<< HEAD
         // <div className="column">
         //    <div>
         //      <img className="rows" 
@@ -86,6 +102,45 @@ class Program extends Component{
                     }</Media>
                 </div>
             </div>
+=======
+        
+        );
+        });
+
+
+        const topEvents = this.state.events.map((event) =>{
+            return(
+                
+                <div className="m-2">
+                   <Card>
+                        <CardImg top style={{height :"150px"}} src={event.image} alt=" image" />
+                        <CardBody>
+                        <CardTitle>{event.title}</CardTitle>
+                        <CardSubtitle>20th March</CardSubtitle>
+                        <CardText>{event.description}</CardText>
+                        <Button>See More</Button>
+                        </CardBody>
+                    </Card>
+            </div>
+            
+            );
+            });
+
+        return(
+                <div className="row mr-0">
+                    <div className="col-md-9">
+                    <Media list>
+                        <h3 className="m-4">Events</h3>
+                        {program
+                    }</Media>
+                    </div>
+                    <div className="col-md-3">
+                        <h3 className="m-4"> Top Events</h3>
+                        {topEvents}
+                    </div>
+                   
+                </div>
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
         )
     }
 

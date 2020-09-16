@@ -8,9 +8,17 @@
   background-color: #E98074;
   padding: 25px 40px;
   margin-left: 30%;
+<<<<<<< HEAD
   margin-top: 75px;
   margin-bottom: 15px;
   overflow: auto;
+=======
+  margin-top: 15px;
+  margin-bottom: 15px;
+  overflow: auto;
+  border: 25 black;
+  border-radius: 20;
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
 }
 
 .PageSwitcher {
@@ -188,6 +196,7 @@ body {
   background: #504f4e;
   }
    
+<<<<<<< HEAD
  .block{
    margin-left: 25%;
  }
@@ -207,3 +216,27 @@ body {
      white-space: pre-line;
      
 }
+=======
+  .mg{ 
+  margin: 10px;
+  }
+  .block{
+    margin-left: 25%;
+  }
+ .column{
+   width: 50%;
+  
+ }
+ .new{
+   width: 40%;
+   background-color: aqua;
+ }
+ 
+ .limit p{
+      width: 280px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: pre-line;
+      
+ }
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca

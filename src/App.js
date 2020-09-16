@@ -8,6 +8,7 @@ import{
   Link,
   Switch
 } from 'react-router-dom';
+import './pages/Program.js';
 import './App.css';
 
 //import SocialLogIn from './SocialLogIn';
@@ -23,8 +24,11 @@ class App extends Component {
         <div className="App">
           <div className="App__Form">
         <Route exact path="/signup" component={SignUp}/>
-        <Route exact path="/program" component={Program}/>
+        
         </div>
+        </div>
+        <div>
+          <Route exact path="/program" component={Program}/>
         </div>
       </Router>
     );

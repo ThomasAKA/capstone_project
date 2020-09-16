@@ -64,7 +64,7 @@ handleSubmit = (e)=>{
       
         <input onChange={this.handlechange} placeholder="Password" type="password" name="password"></input><br></br>
 
-        <button onClick={this.handleSubmit} type="submit">Login</button><br></br>
+        <button onClick={this.handleSubmit} type="submit"><Link to = "/program">Login</Link></button><br></br>
         <a href="/">Forgot Password ?</a>
         {/* <p style={{textAlign:"center"}}>Or</p> */}<br></br>
         <button id="Signup"><Link to = "/signup">Sign Up</Link></button>

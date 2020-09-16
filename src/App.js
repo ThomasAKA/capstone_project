@@ -5,10 +5,10 @@ import Program from './pages/Program';
 import{
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch
+  Link
 } from 'react-router-dom';
 import './App.css';
+import Main from './pages/Main';
 
 //import SocialLogIn from './SocialLogIn';
 
@@ -18,7 +18,8 @@ class App extends Component {
     return (
       <Router>
         <div className="Body">
-          <Route exact path="/" component={LogIn}/>
+          <Route exact path="/" component={Main}/>
+          <Route exact path="/login" component={LogIn}/>
           <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/program" component={Program}/>
         </div>

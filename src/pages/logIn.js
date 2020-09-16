@@ -19,7 +19,11 @@ constructor(props) {
 
 //handle text change
 
+<<<<<<< HEAD
+handlechange= (event)=>{
+=======
 handleChange= (event)=>{
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
   const  {name,value} = event.target
   this.setState({
     [name]:value,
@@ -35,8 +39,12 @@ handleSubmit = (e)=>{
     "password":this.state.password,
   }
 
+<<<<<<< HEAD
+  axios.post("http://127.0.0.1:8000/api/login/", data)
+=======
   console.log(this.state.username,this.state.password)
   axios.post("http://13.81.46.121:8080/api/login/", data)
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
   .then(function (response) {
     console.log(response);
     if(response.status === 200){
@@ -55,6 +63,25 @@ handleSubmit = (e)=>{
 
   render() {
     return (
+<<<<<<< HEAD
+    <section className="form">
+
+  <h2>Login</h2>
+  
+      <form >
+      
+        <input onChange={this.handlechange} placeholder="Username" type="text" name="username"></input>
+      
+        <input onChange={this.handlechange} placeholder="Password" type="password" name="password"></input><br></br>
+
+        <button onClick={this.handleSubmit} type="submit"><Link to = "/program">Login</Link></button><br></br>
+        <a href="/">Forgot Password ?</a>
+        {/* <p style={{textAlign:"center"}}>Or</p> */}<br></br>
+        <button id="Signup"><Link to = "/signup">Sign Up</Link></button>
+      </form>
+
+</section>
+=======
 
   <div className="App">
       <div className="App__Form" style={{marginTop:100}}>
@@ -95,6 +122,7 @@ handleSubmit = (e)=>{
         </div>
       </div>
   
+>>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
     )
 
 

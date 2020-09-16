@@ -8,17 +8,11 @@
   background-color: #e98074;
   padding: 25px 40px;
   margin-left: 30%;
-<<<<<<< HEAD
-  margin-top: 75px;
-  margin-bottom: 15px;
-  overflow: auto;
-=======
   margin-top: 15px;
   margin-bottom: 15px;
   overflow: auto;
   border: 25 black;
   border-radius: 20;
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
 }
 
 .PageSwitcher {
@@ -196,7 +190,6 @@ body {
   background: #504f4e;
   }
    
-<<<<<<< HEAD
  .block{
    margin-left: 25%;
  }
@@ -216,7 +209,6 @@ body {
      white-space: pre-line;
      
 }
-=======
   .mg{ 
   margin: 10px;
   }
@@ -239,8 +231,8 @@ body {
       white-space: pre-line;
       
  }
-<<<<<<< HEAD
-.icons{
+
+ .icons{
   background-color: white;
   height: 1500px;
 }
@@ -289,7 +281,7 @@ body {
 }
 .btn{
   margin-top: 2.5%;
-  width: 10%;
+  /* width: 10%; */
   height: 40px;
 cursor: pointer;
 text-align: center;
@@ -342,6 +334,4 @@ background-color: tomato;
   color: #e05e6f;
   margin-right: 20%;
 }
-=======
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
->>>>>>> 3b8a52c78c085290cd82d1e28c477dd354ec0b35
+

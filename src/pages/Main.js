@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Label, Form, Input, FormGroup } from 'reactstrap'
+import { Link } from 'react-router-dom';
 
 class Main extends Component{
     constructor(props){
@@ -21,20 +22,19 @@ class Main extends Component{
                 <div className="logo"><center><img className="sty" style={imgStyle}  src={require("../assets/images/icon3.png")}/></center></div>
                 
                 <div class="navbar">
-                <a className="active" href="#"><i class="fa fa-fw fa-bars"></i> All Events</a>
-                     <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-                      <a href="#"><i class="fa fa-fw fa-calendar"></i> Events</a>
-                      <a href="#"><i class="fa fa-fw fa-paperclip"></i> Pages</a>
-                     <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
-                      <a href="/login"><i class="fa fa-fw fa-user"></i> Login</a>
-                      <a href="/signup"><i class="fa fa-fw fa-sign-in"></i> SignUp</a>
+                     <Link to="/"><i class="fa fa-fw fa-home"></i> Home</Link>
+                      <Link to="/events"><i class="fa fa-fw fa-calendar"></i> Events</Link>
+                      {/* <a href="#"><i class="fa fa-fw fa-paperclip"></i> Pages</a>
+                     <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact Us</a> */}
+                      <Link to="/login"><i class="fa fa-fw fa-user"></i> Login</Link>
+                      <Link to="/signup"><i class="fa fa-fw fa-sign-in"></i> SignUp</Link>
                 </div>  
                 <div className="overlay">
-                     <img style={ingStyle}src= {require("../assets/images/Dance5.jpg")} />
+                     <img style={ingStyle}src= {require("../assets/images/events.jpg")} />
                      <div >
                          <div className="centered"><center>EXPLORE THE FUN
                      <p className="paragraph">Discover awesome events around you! And not only you!!</p></center></div>
-                     <Form className="fon">
+                     {/* <Form className="fon">
                      <Row form>
         <Col md={2}>
           <FormGroup>
@@ -59,7 +59,7 @@ class Main extends Component{
        
       </Row>
      
-      </Form>
+      </Form> */}
       </div>
                  </div>
                  <div className="ne"><center>

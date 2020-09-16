@@ -13,11 +13,7 @@ class SignUp extends Component {
             firstname: '',
             lastname: '',
             password2: '',
-<<<<<<< HEAD
-            terms: 'false',
-=======
             terms: false
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -50,13 +46,6 @@ class SignUp extends Component {
           "lastname":this.state.lastname,
           "terms":this.state.terms,
         }
-<<<<<<< HEAD
-       axios.post("http://127.0.0.1:8000/usermanagements/", data)
-
-       .then(response =>{
-        console.log(response);
-        if(response.status === 200){
-=======
         const {password1, password2} =this.state;
         if (password1 !== password2){
           alert("Passwords dont match");
@@ -66,7 +55,6 @@ class SignUp extends Component {
        .then(response =>{
         console.log(response);
         if(response.status === 201){
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
         console.log("SignUp successful");
         }
         else{
@@ -77,21 +65,15 @@ class SignUp extends Component {
         console.log(error);
       
     });
-<<<<<<< HEAD
-=======
   }
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
   
 }
 
 
     render() {
         return (
-<<<<<<< HEAD
-=======
     <div className="App">
       <div className="App__Form">
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
         <div className="FormCenter">
           <h2><center>Sign Up</center></h2>
             <form onSubmit={this.handleSubmit} className="FormFields">
@@ -137,16 +119,10 @@ class SignUp extends Component {
               </div>
 
               <div className="FormField">
-<<<<<<< HEAD
-                  <button className="FormField__Button mr-20"><Link to = "/">Sign Up</Link></button> 
-                  {/* <Link to="/sign-in" className="FormField__Link">I'm already member</Link> */}
-              </div>
-=======
                   <button type="submit" className="FormField__Button mr-20">Sign Up</button> 
                   {/* <Link to="/sign-in" className="FormField__Link">I'm already member</Link> */}
               </div>
-              <Link to="/" className="FormField__Link">Already Signed up ? Click here</Link> 
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
+              <Link to="/login" className="FormField__Link">Already Signed up ? Click here</Link> 
               {/* <div class="social-container">
                 <h3>SignUp with your Social media platform</h3>
                 <a 
@@ -163,12 +139,9 @@ class SignUp extends Component {
                 </div> */}
             </form>
           </div>
-<<<<<<< HEAD
-=======
         </div>
       </div>
 
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
         );
     }
 }

@@ -1,16 +1,8 @@
 import React, { Component} from 'react';
-<<<<<<< HEAD
-import { Media } from 'reactstrap';
-=======
 import { Media,Card ,CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button} from 'reactstrap';
-<<<<<<< HEAD
 import '../assets/css/bootstrap.css';
 import Calendar from 'react-calendar' 
-=======
-import '../assets/css/bootstrap.css'    
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
->>>>>>> 3b8a52c78c085290cd82d1e28c477dd354ec0b35
 
 
 class Program extends Component{
@@ -75,53 +67,17 @@ class Program extends Component{
         const program = this.state.events.map((event) =>{
         return(
             
-<<<<<<< HEAD
-            <div className="column">
-                <Media tag ="ul">
+                <Media tag ="ul" style={{marginBottom :"1rem"}}>
                     <Media left className="hover" >
                      <Media object  align ="left" style={imgStyle} src={event.image} />
                     </Media>
-                    <Media body className="block">
-=======
-            <div className="pt-2">
-                <Media tag ="ul">
-                    <Media  className="hover mr-4" >
-                     <Media object style={imgStyle} src={event.image} />
-                    </Media>
-                    <Media body className="">
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
+                    <Media body className="pl-4">
                         <Media heading>{event.title}</Media>
                         <p className="limit">{event.description}</p>
                         <p className="limit">{event.location}</p>
                     </Media>
                     
               </Media>
-        </div>
-<<<<<<< HEAD
-        // <div className="column">
-        //    <div>
-        //      <img className="rows" 
-        //         style={imgStyle} align ="left" src = {event.image}/>
-        //     </div>
-        //  <div className="block"> 
-        //     <div><h1>{event.title}</h1>
-        //     <p className="limit">{event.description}</p>
-        //     <p className="limit">{event.location}</p>
-        //     </div>
-        //  </div>
-        // </div>
-        );
-        });
-
-        return(
-            <div className="container">
-                <div className="row">
-                    <Media list>
-                        {program
-                    }</Media>
-                </div>
-            </div>
-=======
         
         );
         });
@@ -134,7 +90,7 @@ class Program extends Component{
                  
                    
                 <div className="m-2">
-                     <Calendar />
+
                    <Card>
                         <CardImg top style={{height :"150px"}} src={event.image} alt=" image" />
                         <CardBody>
@@ -158,13 +114,15 @@ class Program extends Component{
                         {program
                     }</Media>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 ">
+                        <div className="mt-4">
+                        <Calendar />
+                        </div>
                         <h3 className="m-4"> Top Events</h3>
                         {topEvents}
                     </div>
                    
                 </div>
->>>>>>> 4fe6221c8f99aa46536f19ca110d4463272ce0ca
         )
     }
 

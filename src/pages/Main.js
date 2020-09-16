@@ -32,7 +32,7 @@ class Main extends Component{
                 <div className="overlay">
                      <img style={ingStyle}src= {require("../assets/images/events.jpg")} />
                      <div >
-                         <div className="centered"><center>EXPLORE THE FUN 
+                         <div className="centered"><center>EXPLORE THE FUN
                      <p className="paragraph">Discover awesome events around you! And not only you!!</p></center></div>
                      {/* <Form className="fon">
                      <Row form>
@@ -42,7 +42,7 @@ class Main extends Component{
             <Input type="text" placeholder="search event"/>
           </FormGroup>
         </Col>
-        <Col md={2}> 
+        <Col md={2}>
           <FormGroup>
             <Label sm="3"><h6>When</h6></Label>
             <Input type="date"placeholder="DD/MM/YY"/>

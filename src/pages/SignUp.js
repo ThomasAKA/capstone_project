@@ -46,6 +46,10 @@ class SignUp extends Component {
           "lastname":this.state.lastname,
           "terms":this.state.terms,
         }
+        const {password1, password2} =this.state;
+        if (password1 !== password2){
+          alert("Passwords dont match");
+        } else{
        axios.post("http://13.81.46.121:8080/usermanagements/", data)
 
        .then(response =>{
@@ -61,6 +65,7 @@ class SignUp extends Component {
         console.log(error);
       
     });
+  }
   
 }
 
@@ -117,7 +122,7 @@ class SignUp extends Component {
                   <button type="submit" className="FormField__Button mr-20">Sign Up</button> 
                   {/* <Link to="/sign-in" className="FormField__Link">I'm already member</Link> */}
               </div>
-              <Link to="/" className="FormField__Link">Already Signed up ? Click here</Link> 
+              <Link to="/login" className="FormField__Link">Already Signed up ? Click here</Link> 
               {/* <div class="social-container">
                 <h3>SignUp with your Social media platform</h3>
                 <a 

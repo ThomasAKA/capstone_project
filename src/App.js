@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/logIn';
 import Program from './pages/Program';
+import Main from './pages/Main';
 import{
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch
+  Link
 } from 'react-router-dom';
 import './App.css';
 
@@ -18,10 +18,11 @@ class App extends Component {
     return (
       <Router>
         <div className="Body">
-          <Route exact path="/" component={LogIn}/>
+          <Route exact path="/" component={Main}/>
+          <Route exact path="/login" component={LogIn}/>
           <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/events" component={Program}/>
         </div>
-        {/* <Route exact path="/program" component={Program}/> */}
       </Router>
     );
   }
@@ -30,3 +31,6 @@ class App extends Component {
 
 
 export default App;
+
+
+

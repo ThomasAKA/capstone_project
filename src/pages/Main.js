@@ -42,7 +42,7 @@ class Main extends Component{
             <Input type="text" placeholder="search event"/>
           </FormGroup>
         </Col>
-        <Col md={2}>
+        <Col md={2}> 
           <FormGroup>
             <Label sm="3"><h6>When</h6></Label>
             <Input type="date"placeholder="DD/MM/YY"/>

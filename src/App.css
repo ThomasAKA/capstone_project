@@ -283,10 +283,10 @@ body {
   font-family: sans-serif;
 }
 .fon{
-  position: relative;
+  position: absolute;
   top: 80%;
   left: 30%;
-  transform: translate(-10%, -195%);
+  transform: translate(-10%, -80%);
 }
 .btn{
   margin-top: 2.5%;
@@ -296,6 +296,9 @@ body {
   font-family: sans-serif;
   font-weight: 500;
   background-color: rgb(247, 140, 121);
+  position: absolute;
+  left: 102%;
+  top: 25%;
 }
 .btn:hover{
   background-color: rgb(58, 58, 52);

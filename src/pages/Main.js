@@ -30,7 +30,7 @@ class Main extends Component{
       </div>
       <div class="navbar">
         <Link to="/"><i class="fa fa-fw fa-home"></i> Home</Link>
-        <Link to="/events"><i class="fa fa-fw fa-calendar"></i> Events</Link>
+        <Link to="/" ><i class="fa fa-fw fa-calendar"></i> Events</Link>
         <Link to="/login"><i class="fa fa-fw fa-user"></i> Login</Link>
         <Link to="/signup"><i class="fa fa-fw fa-sign-in"></i> SignUp</Link>
       </div>  
@@ -41,21 +41,22 @@ class Main extends Component{
             <center>EXPLORE THE FUN
             <p className="paragraph">Discover awesome events around you! And not only you!! Get ready for an awesome ride!!</p></center>
           </div>
+          <div>
           <Form className="fon">
             <Row form>
-              <Col md={2}>
+              <Col md={4}>
                 <FormGroup>
                   <Label sm="3"><h6>Event</h6></Label>
                   <Input type="text" placeholder="search event"/>
                 </FormGroup>
               </Col>
-              <Col md={2}>
+              <Col md={4}>
                 <FormGroup>
                   <Label sm="3"><h6>When</h6></Label>
                   <Input type="date"placeholder="DD/MM/YY"/>
                 </FormGroup>
               </Col>
-              <Col md={2}>
+              <Col md={4}>
                <FormGroup>
                   <Label sm="11"><h6><center>where</center></h6></Label>
                   <Input type="text" placeholder="search a location"/>
@@ -64,6 +65,7 @@ class Main extends Component{
              <button class="btn"><center>show me fun!</center></button>
             </Row>
           </Form>
+          </div>
         </div>
       </div>
       <div className="ne">
@@ -74,14 +76,14 @@ class Main extends Component{
             <div className="sq1">
               <center>
               <WorkOutlineOutlinedIcon color="secondary" style={{ fontSize: 60}}/>
-              <h3>Product Launch/Logistics</h3>
+              <h3>Event Launch/Logistics</h3>
               <p>At eripuit signiferumque sea, vel ad mucius molestie, cu labitur iuvaret vulputate sed.</p>
               </center>
               </div>
                 <div className="sq2">
                   <center>
                     <CameraOutlinedIcon color="secondary" style={{ fontSize: 60}} />
-                    <h3>Customer Acquisition</h3>
+                    <h3>Customer Satisfaction</h3>
                     <p>At eripuit signiferumque sea, vel ad mucius molestie, cu labitur iuvaret vulputate sed.</p>
                   </center>
                 </div>

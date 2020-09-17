@@ -15,7 +15,7 @@ class Booking(models.Model):
     )
  
     time = models.CharField(verbose_name='time', max_length=50,
-           choices=times, default='', unique=True)
+           choices=times, default='')
 
 
 

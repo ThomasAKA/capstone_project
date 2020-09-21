@@ -7,6 +7,7 @@ from event.models import Event
 class Booking(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    #users = models.ManyToManyField(User, through='Event', blank=True)
  
     times = (
         ('Morning', 'Morning'),

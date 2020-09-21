@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from . import views
 
-from .views import BookingView
+from .views import BookingView,BookCountView
 from knox import views as knox_views
 
 router = routers.DefaultRouter()
@@ -16,4 +16,5 @@ urlpatterns = [
     path('', include(router.urls)),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/',include(router.urls)),
+    path('api/bookcount', BookCountView.as_view(), name = 'bookcount'),
 ]

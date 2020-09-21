@@ -1,20 +1,22 @@
 from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework.authtoken.serializers import AuthTokenSerializer
-from rest_framework import permissions
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication,TokenAuthentication
+from rest_framework import viewsets,generics
+from rest_framework.response import Response
 from .serializers import BookingSerializer
 from .models import Booking
+from event.serializers import EventSerializer
 
-serializer = BookingSerializer()
 class BookingView(viewsets.ModelViewSet):
-    permission_classes = (permissions.AllowAny,)
-    # Note: You can have as many authentication classes here as suits your needs
-    authentication_classes = (TokenAuthentication,BasicAuthentication,SessionAuthentication)
-
     serializer_class = BookingSerializer   
     queryset = Booking.objects.all()
 
-    # we are overriding the in-built create method inherited from viewsets.ModelViewSet
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+#Count the total number of booked events
+
+class BookCountView(generics.GenericAPIView):
+    serializer_class = BookingSerializer
+
+    def post(self,request,format = None):
+        event = Booking.objects.all()
+        count = event.__len__()
+        serializer = BookingSerializer(event,many = True)
+        return Response({"count":count, "data":serializer.data})
+        #return Booking.objects.filter(event=Booking.user).count()

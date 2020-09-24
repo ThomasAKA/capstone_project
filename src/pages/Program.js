@@ -1,80 +1,102 @@
 import React, { Component} from 'react';
-import { Media,Card ,CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button} from 'reactstrap';
+import { Media,Card ,CardImg, CardText, CardBody,FormGroup,Input,Label,
+    CardTitle, CardSubtitle, Button,Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import '../assets/css/bootstrap.css';
 import Calendar from 'react-calendar' 
+import {axiosinstance} from '../axios'
+import { Link } from 'react-router-dom';
+import { withStore } from '@spyna/react-store'
 
+
+const token = localStorage.getItem('token');
 
 class Program extends Component{
     constructor(props){
         super(props)
         this.state={
-            date: new Date(),
-            events : [
-            {
-                title: 'Scrap',
-                description:'Creating a beautiful personalized scrapbook has never been easier. In collaboration with Mixbook, Martha created her own collection of beautiful scrap books and...',
-               
-                image: require('../assets/images/newwww.jpg'),
-            },
-            {
-                title: 'New Look',
-                description:'If you’re a recruiter looking to improve your time management skills, you’ve come to the right place! you will learn an awesome 4 step time management technique. Bonus: Useful time management tips and apps included!',
-                
-                image: require ('../assets/images/new.jpg'),
-            },
-            { 
-                title: 'GetInvolved',
-                description:'Motivation is a powerful, yet tricky beast. Sometimes it is really easy to get motivated, and you find yourself wrapped up in a whirlwind of excitement. Other times ...',
-
-                image: require('../assets/images/neww.jpg'),
-            },
-            {
-                title: 'Blobitecture',
-                description:'A mashup of the words “blob” and “architecture,” blobitecture is the name for the architectural style of buildings designed with totally unique, organic forms, often ..',
-                image: require('../assets/images/newww.jpg'),
-            },
-            {
-                title: 'Color Psychology',
-                description:'Theres a whole science in the meanings of different colors. As an entrepreneur or designer, its essential to be aware of these color meanings and choose your ...',
-                image: require('../assets/images/newwwww.jpg') ,
-            },
-            {
-                title: 'New Look',
-                description:'If you’re a recruiter looking to improve your time management skills, you’ve come to the right place! you will learn an awesome 4 step time management technique. Bonus: Useful time management tips and apps included!',
-                
-                image: require ('../assets/images/new.jpg'),
-            },
-            {
-                title: 'Scrap',
-                description:'Creating a beautiful personalized scrapbook has never been easier. In collaboration with Mixbook, Martha created her own collection of beautiful scrap books and...',
-               
-                image: require('../assets/images/newwww.jpg'),
-            },
-            
-          ]
+            events : [],
+            modalOpen: false,
+            event:"",
+            time:"",
+            user:4
         }
         
     }
+
+    //toggle Modal
+toggle = () => this.setState({modalOpen:!this.state.modalOpen});   
+
+
+//handle input change
+handleChange= (event)=>{
+    const  {name,value} = event.target
+    this.setState({
+      [name]:value,
+        })
+  }
+
+
+    componentDidMount() {
+        axiosinstance.get("/events/")
+        .then( (response) =>{
+            console.log(response.data)
+        this.setState(
+            {
+                events:response.data
+            }
+        )
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        console.log(this.state.events)
+      }
    
+  bookEvent = (event,time,user)=> axiosinstance.post("/eventbookings/",{event,time,user})
+      .then( (response) =>{
+          console.log(response.data)
+    //   this.setState(
+    //       {
+    //           events:response.data
+    //       }
+    //   )
+      })
+      .catch(function (error) {
+          alert(error.response.data.non_field_errors.toString())
+        console.log(error.response.data.non_field_errors.toString());
+      });
+
+
 
     render(){
         var imgStyle={
-            width:"150px",
-            height :"100px",
+            width:"170px",
+            height :"170px",
         }
 
-        const program = this.state.events.map((event) =>{
+        const program = this.state.events.map((event,index) =>{
         return(
             
-                <Media tag ="ul" style={{marginBottom :"1rem"}}>
+                <Media key = {index} tag ="ul" style={{marginBottom :"1.5rem"}}>
                     <Media left className="hover" >
                      <Media object  align ="left" style={imgStyle} src={event.image} />
                     </Media>
                     <Media body className="pl-4">
                         <Media heading>{event.title}</Media>
                         <p className="limit">{event.description}</p>
-                        <p className="limit">{event.location}</p>
+                        <p className="limit">Speaker : {event.speaker}</p>
+                        <p className="limit">Location : {event.location}</p>
+                        <p className="limit">Time : {event.event_time}</p>
+                     
+                        {this.props.store.get('isloggedIn')===true ?  <button onClick={()=>{
+                            this.setState({
+                              event:event.id,
+                              time:event.event_time  
+                            })
+                            this.toggle()
+                    }}>Book Event</button> :
+                      <Link to="/login"> <button>Log In to Book</button> </Link>
+                        }
                     </Media>
                     
               </Media>
@@ -85,11 +107,11 @@ class Program extends Component{
        
 
 
-        const topEvents = this.state.events.map((event) =>{
+        const topEvents = this.state.events.map((event,index) =>{
             return(
                  
                    
-                <div className="m-2">
+                <div key={index} className="m-2">
 
                    <Card>
                         <CardImg top style={{height :"150px"}} src={event.image} alt=" image" />
@@ -97,7 +119,7 @@ class Program extends Component{
                         <CardTitle>{event.title}</CardTitle>
                         <CardSubtitle>20th March</CardSubtitle>
                         <CardText>{event.description}</CardText>
-                        <Button>See More</Button>
+                        <button>See More</button>
                         </CardBody>
                     </Card>
             </div>
@@ -105,8 +127,11 @@ class Program extends Component{
             );
             });
 
+
+            const {event,time,user}=this.state
+
         return(
-            
+            <>
                 <div className="row mr-0">
                     <div className="col-md-9">
                     <Media list>
@@ -123,9 +148,26 @@ class Program extends Component{
                     </div>
                    
                 </div>
+
+<div>
+
+
+    {/* booking modal */}
+<Modal isOpen={this.state.modalOpen} toggle={this.toggle}>
+  <ModalHeader toggle={this.toggle}>Book Event</ModalHeader>
+  <ModalBody>
+ <p>Click book to confirm</p>
+  </ModalBody>
+  <ModalFooter>
+    <button className=" btn-primaryary" onClick={()=>this.bookEvent(event,time,user)}>Book</button>{' '}
+    <button className="btn-danger" onClick={this.toggle}>Cancel</button>
+  </ModalFooter>
+</Modal>
+</div>
+</>
         )
     }
 
 }
 
-export default Program;
+export default withStore(Program);

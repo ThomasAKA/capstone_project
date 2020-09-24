@@ -30,7 +30,7 @@ class Main extends Component{
       </div>
       <div class="navbar">
         <Link to="/"><i class="fa fa-fw fa-home"></i> Home</Link>
-        <Link to="/" ><i class="fa fa-fw fa-calendar"></i> Events</Link>
+        <Link to="/events" ><i class="fa fa-fw fa-calendar"></i> Events</Link>
         <Link to="/login"><i class="fa fa-fw fa-user"></i> Login</Link>
         <Link to="/signup"><i class="fa fa-fw fa-sign-in"></i> SignUp</Link>
       </div>  
@@ -39,10 +39,10 @@ class Main extends Component{
         <div >
           <div className="centered">
             <center>EXPLORE THE FUN
-            <p className="paragraph">Discover awesome events around you! And not only you!! Get ready for an awesome ride!!</p></center>
+            <p className="paragraph ">Discover awesome events around you! And not only you!! Get ready for an awesome ride!!</p></center>
           </div>
           <div>
-          <Form className="fon">
+          {/* <Form className="fon">
             <Row form>
               <Col md={4}>
                 <FormGroup>
@@ -64,7 +64,7 @@ class Main extends Component{
              </Col>
              <button class="btn"><center>show me fun!</center></button>
             </Row>
-          </Form>
+          </Form> */}
           </div>
         </div>
       </div>

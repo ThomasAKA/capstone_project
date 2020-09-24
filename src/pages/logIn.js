@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import{ Link , Redirect} from 'react-router-dom';
+import {axiosinstance} from '../axios'
+import{ Link,withRouter } from 'react-router-dom';
+import { withStore } from '@spyna/react-store'
 
 
-export default class LogIn extends Component {
+class LogIn extends Component {
 
- 
 
 constructor(props) {
   super(props)
 
   this.state = {
      username:"",
-     password:""
+     password:"",
+     isloggedIn:false
   }
 }
 
@@ -35,19 +36,27 @@ handleSubmit = (e)=>{
     "password":this.state.password,
   }
 
+
   console.log(this.state.username,this.state.password)
-  axios.post("http://13.81.46.121:8080/api/login/", data)
-  .then(function (response) {
+  axiosinstance.post("/login/", data)
+  .then( (response)=> {
     console.log(response);
+    console.log(this.props.store.get('isloggedIn'))
     if(response.status === 200){
-       console.log("Login successfull");
-       }
+     localStorage.setItem('token',response.data.token)
+     this.props.store.set('isloggedIn', true)
+     this.props.history.push("/dashboard")
+
+   }
        else{
+         alert("Couldn't Login with provided Details. Please try again")
          console.log(response.data)
        };
   })
   .catch(function (error) {
     console.log(error);
+    alert("Couldn't Login with provided Details. Please try again")
+
   });
 
 }
@@ -73,7 +82,7 @@ handleSubmit = (e)=>{
               </div>
 
               <div className="FormField">
-                  <button type="submit" className="FormField__Button mr-20"><Link to ="/events">Login</Link></button> 
+                  <button type="submit" className="FormField__Button mr-20">Login</button> 
               </div>
               <Link to="/signup" className="FormField__Link">Not Signed up yet ? Click here</Link> 
               {/* <div class="social-container">
@@ -100,3 +109,5 @@ handleSubmit = (e)=>{
 
   }
 }
+
+export default withRouter(withStore(LogIn))

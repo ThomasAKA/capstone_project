@@ -5,8 +5,7 @@ import '../assets/css/bootstrap.css';
 import Calendar from 'react-calendar' 
 import {axiosinstance} from '../axios'
 import { Link } from 'react-router-dom';
-import { withStore } from '@spyna/react-store'
-
+import GLOBAL from '../Global'
 
 const token = localStorage.getItem('token');
 
@@ -18,7 +17,7 @@ class Program extends Component{
             modalOpen: false,
             event:"",
             time:"",
-            user:4
+            user:6
         }
         
     }
@@ -40,6 +39,8 @@ handleChange= (event)=>{
         axiosinstance.get("/events/")
         .then( (response) =>{
             console.log(response.data)
+            console.log(GLOBAL.appState.state.isloggedIn)
+
         this.setState(
             {
                 events:response.data
@@ -55,11 +56,7 @@ handleChange= (event)=>{
   bookEvent = (event,time,user)=> axiosinstance.post("/eventbookings/",{event,time,user})
       .then( (response) =>{
           console.log(response.data)
-    //   this.setState(
-    //       {
-    //           events:response.data
-    //       }
-    //   )
+        alert('Event Booked Successfuly')
       })
       .catch(function (error) {
           alert(error.response.data.non_field_errors.toString())
@@ -88,7 +85,7 @@ handleChange= (event)=>{
                         <p className="limit">Location : {event.location}</p>
                         <p className="limit">Time : {event.event_time}</p>
                      
-                        {this.props.store.get('isloggedIn')===true ?  <button onClick={()=>{
+                        {GLOBAL.appState.state.isloggedIn==='true' ?  <button onClick={()=>{
                             this.setState({
                               event:event.id,
                               time:event.event_time  
@@ -170,4 +167,4 @@ handleChange= (event)=>{
 
 }
 
-export default withStore(Program);
+export default Program;

@@ -11,39 +11,21 @@ import{
   Switch
 } from 'react-router-dom';
 import './App.css';
-import { withStore } from '@spyna/react-store'
+import GLOBAL from '../src/Global'
 
-
-
-
-const PrivateRoute=({ children, ...rest })=> {
-  return (
-    <Route
-      {...rest}
-      render={({ location ,isloggedIn}) =>
-        isloggedIn==false ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
 
 class Routes extends Component {
 
  
-constructor(props) {
-  super(props)
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      isloggedIn: localStorage.getItem('isloggedIn') || false
+    };
+    GLOBAL.appState = this;
+  }
+  
   render() {
-      console.log(this.props.store.get('isloggedIn'))
     return (
       <Router>
         <div className="Body">
@@ -55,7 +37,7 @@ constructor(props) {
         <Route exact path="/events" component={Program}/>
  
         <Route exact path="/dashboard">
-        {this.props.store.get('isloggedIn')===false? <Redirect to="/login" /> : <Dashboard />}
+        {GLOBAL.appState.state.isloggedIn===false? <Redirect to="/login" /> : <Dashboard />}
         </Route>
       </Switch>
         </div>
@@ -66,4 +48,4 @@ constructor(props) {
 
 
 
-export default withStore(Routes);
+export default Routes;

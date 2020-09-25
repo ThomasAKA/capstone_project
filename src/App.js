@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-
+import GLOBAL from '../src/Global'
 import './App.css';
 import { createStore } from '@spyna/react-store'
 import Routes from './routes';
 
 class App extends Component {
 
- 
-constructor(props) {
-  super(props)
-}
+  
+  
 
   render() {
     return (
@@ -18,12 +16,9 @@ constructor(props) {
   }
 }
 
-const initialValue = {
-  isloggedIn: false,
-}
 
 
-export default createStore(App,initialValue);
+export default App;
 
 
 

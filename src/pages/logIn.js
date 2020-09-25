@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {axiosinstance} from '../axios'
 import{ Link,withRouter } from 'react-router-dom';
-import { withStore } from '@spyna/react-store'
+import GLOBAL from '../Global'
 
 
 class LogIn extends Component {
@@ -41,21 +41,28 @@ handleSubmit = (e)=>{
   axiosinstance.post("/login/", data)
   .then( (response)=> {
     console.log(response);
-    console.log(this.props.store.get('isloggedIn'))
     if(response.status === 200){
      localStorage.setItem('token',response.data.token)
-     this.props.store.set('isloggedIn', true)
+     GLOBAL.appState.setState({isloggedIn:true},() => {
+      localStorage.setItem('isloggedIn',true)
+    })
      this.props.history.push("/dashboard")
+     console.log(GLOBAL.appState.state.isloggedIn)
 
    }
        else{
          alert("Couldn't Login with provided Details. Please try again")
          console.log(response.data)
+         console.log(GLOBAL.appState.state.isloggedIn)
+
        };
   })
   .catch(function (error) {
     console.log(error);
+    console.log(GLOBAL.appState.state.isloggedIn)
+
     alert("Couldn't Login with provided Details. Please try again")
+
 
   });
 
@@ -110,4 +117,4 @@ handleSubmit = (e)=>{
   }
 }
 
-export default withRouter(withStore(LogIn))
+export default withRouter(LogIn)

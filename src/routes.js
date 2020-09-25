@@ -20,7 +20,7 @@ class Routes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isloggedIn: localStorage.getItem('isloggedIn') || false
+      isloggedIn: localStorage.getItem('isloggedIn') || 'false'
     };
     GLOBAL.appState = this;
   }
@@ -32,15 +32,16 @@ class Routes extends Component {
         <Switch>
         <Route exact path="/" component={Main}/>
         <Route exact path="/login">
-       {GLOBAL.appState.state.isloggedIn===false? <Redirect to="/login" /> : <Main />}
+       {GLOBAL.appState.state.isloggedIn!=='false'? <Redirect to="/main" /> : <LogIn />}
         </Route>
         <Route exact path="/signup">
-       {GLOBAL.appState.state.isloggedIn===false? <Redirect to="/signup" /> : <Main />}
+       {GLOBAL.appState.state.isloggedIn!=='false' ? <Redirect to="/main" /> : <SignUp />}
         </Route>      
+
         <Route exact path="/events" component={Program}/>
  
         <Route exact path="/dashboard">
-        {GLOBAL.appState.state.isloggedIn===false? <Redirect to="/login" /> : <Dashboard />}
+        {GLOBAL.appState.state.isloggedIn==="false"? <Redirect to="/login" /> : <Dashboard />}
         </Route>
       </Switch>
         </div>

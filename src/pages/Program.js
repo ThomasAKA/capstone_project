@@ -39,7 +39,6 @@ handleChange= (event)=>{
         axiosinstance.get("/events/")
         .then( (response) =>{
             console.log(response.data)
-            console.log(GLOBAL.appState.state.isloggedIn)
 
         this.setState(
             {

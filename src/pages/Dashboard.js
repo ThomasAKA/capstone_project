@@ -11,6 +11,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import GLOBAL from '../Global'
+import {handleLogout} from '../Logout'
 
 
 class dashboard extends Component{
@@ -48,7 +49,7 @@ class dashboard extends Component{
                     <a className="dash_icon2" href="/events"><BookmarkBorderIcon/>Bookings</a>           
                     
                                      
-                    <a className="dash_icon3" href="/login"><PowerSettingsNewRoundedIcon/>SignOut</a>
+                    <a className="dash_icon3" onClick={handleLogout}><PowerSettingsNewRoundedIcon/>SignOut</a>
                 
             </div>
                 

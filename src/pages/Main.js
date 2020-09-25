@@ -9,6 +9,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import CopyrightIcon from '@material-ui/icons/Copyright';
 import GLOBAL from '../Global'
+import {handleLogout} from '../Logout'
 
 class Main extends Component{
     constructor(props){
@@ -34,7 +35,7 @@ class Main extends Component{
       <div class="navbar">
         <Link to="/"><i class="fa fa-fw fa-home"></i> Home</Link>
         <Link to="/events" ><i class="fa fa-fw fa-calendar"></i> Events</Link>
-        <Link to="/login"><i class="fa fa-fw fa-sign-out"></i> Logout</Link>
+        <a onClick={handleLogout}><i class="fa fa-fw fa-sign-out"></i> Logout</a>
       </div>  : 
       <div class="navbar">
       <Link to="/"><i class="fa fa-fw fa-home"></i> Home</Link>

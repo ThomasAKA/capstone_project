@@ -32,10 +32,10 @@ class Routes extends Component {
         <Switch>
         <Route exact path="/" component={Main}/>
         <Route exact path="/login">
-       {GLOBAL.appState.state.isloggedIn!=='false'? <Redirect to="/main" /> : <LogIn />}
+       {GLOBAL.appState.state.isloggedIn!=='false'? <Redirect to="/" /> : <LogIn />}
         </Route>
         <Route exact path="/signup">
-       {GLOBAL.appState.state.isloggedIn!=='false' ? <Redirect to="/main" /> : <SignUp />}
+       {GLOBAL.appState.state.isloggedIn!=='false' ? <Redirect to="/" /> : <SignUp />}
         </Route>      
 
         <Route exact path="/events" component={Program}/>

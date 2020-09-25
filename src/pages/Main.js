@@ -8,6 +8,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import CopyrightIcon from '@material-ui/icons/Copyright';
+import GLOBAL from '../Global'
 
 class Main extends Component{
     constructor(props){
@@ -28,12 +29,21 @@ class Main extends Component{
     <div className="icons">
       <div className="logo"><center><img className="sty" style={imgStyle}  src={require("../assets/images/icon3.png")}/></center>
       </div>
+
+      {GLOBAL.appState.state.isloggedIn==='true' ?
       <div class="navbar">
         <Link to="/"><i class="fa fa-fw fa-home"></i> Home</Link>
         <Link to="/events" ><i class="fa fa-fw fa-calendar"></i> Events</Link>
-        <Link to="/login"><i class="fa fa-fw fa-user"></i> Login</Link>
-        <Link to="/signup"><i class="fa fa-fw fa-sign-in"></i> SignUp</Link>
-      </div>  
+        <Link to="/login"><i class="fa fa-fw fa-sign-out"></i> Logout</Link>
+      </div>  : 
+      <div class="navbar">
+      <Link to="/"><i class="fa fa-fw fa-home"></i> Home</Link>
+      <Link to="/events" ><i class="fa fa-fw fa-calendar"></i> Events</Link>
+      <Link to="/login"><i class="fa fa-fw fa-user"></i> Login</Link>
+      <Link to="/signup"><i class="fa fa-fw fa-sign-in"></i> SignUp</Link>
+        </div> 
+      
+      }
       <div>
         <img style={ingStyle}src= {require("../assets/images/banner.jpg")} />
         <div >

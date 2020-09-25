@@ -31,9 +31,12 @@ class Routes extends Component {
         <div className="Body">
         <Switch>
         <Route exact path="/" component={Main}/>
-        <Route exact path="/login" component={LogIn}/>
-        <Route exact path="/signup" component={SignUp}/>
-      
+        <Route exact path="/login">
+       {GLOBAL.appState.state.isloggedIn===false? <Redirect to="/login" /> : <Main />}
+        </Route>
+        <Route exact path="/signup">
+       {GLOBAL.appState.state.isloggedIn===false? <Redirect to="/signup" /> : <Main />}
+        </Route>      
         <Route exact path="/events" component={Program}/>
  
         <Route exact path="/dashboard">

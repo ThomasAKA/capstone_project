@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from . import views
 
-from .views import EventView, CountView
+from .views import EventView, CountView, EventsBookedByUser
 from knox import views as knox_views
 
 
@@ -19,4 +19,5 @@ urlpatterns = [
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/',include(router.urls)),
     path('api/count', CountView.as_view(), name = 'count'),
+    path('api/userevent/<pk>/', EventsBookedByUser.as_view(), name = 'userevent'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

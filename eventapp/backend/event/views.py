@@ -12,7 +12,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 # Create your views here.
 class EventView(viewsets.ModelViewSet):
-    permission_classes = (IsAdminUser, IsAuthenticated)
+    #permission_classes = (IsAdminUser, IsAuthenticated)
 
     serializer_class = EventSerializer
     queryset = Event.objects.all()
